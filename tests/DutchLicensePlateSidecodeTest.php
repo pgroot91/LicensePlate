@@ -104,13 +104,37 @@ class DutchLicensePlateSidecodeTest extends PHPUnit_Framework_TestCase
 
     public function testGetSidecodeCD()
     {
-        $licenseplate = new DutchLicensePlate('CDA123');
+        $licenseplate = new DutchLicensePlate('CD123');
         $this->assertEquals($licenseplate->getSidecode(), 'CD');
         $this->assertTrue($licenseplate->isValid());
 
-        $licenseplate = new DutchLicensePlate('CDA1');
+        $licenseplate = new DutchLicensePlate('CD1234');
         $this->assertEquals($licenseplate->getSidecode(), 'CD');
         $this->assertTrue($licenseplate->isValid());
+    }
+
+    public function testGetSidecodeCDJ()
+    {
+        $licenseplate = new DutchLicensePlate('CDJ123');
+        $this->assertEquals($licenseplate->getSidecode(), 'CDJ');
+
+        $licenseplate = new DutchLicensePlate('CDJ12');
+        $this->assertEquals($licenseplate->getSidecode(), 'CDJ');
+
+        $licenseplate = new DutchLicensePlate('CDJ1');
+        $this->assertFalse($licenseplate->getSidecode());
+    }
+
+    public function testGetSidecodeAA()
+    {
+        $licenseplate = new DutchLicensePlate('AA12');
+        $this->assertEquals($licenseplate->getSidecode(), 'AA');
+
+        $licenseplate = new DutchLicensePlate('AA123');
+        $this->assertEquals($licenseplate->getSidecode(), 'AA');
+
+        $licenseplate = new DutchLicensePlate('AA1234');
+        $this->assertEquals($licenseplate->getSidecode(), 1);
     }
 
     public function testGetSidecodeFalse()

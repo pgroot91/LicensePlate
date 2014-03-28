@@ -22,6 +22,13 @@ class DutchLicensePlate extends AbstractLicensePlate implements LicensePlateInte
     {
         $licenseplate = strtoupper(str_replace('-', '', $this->licenseplate));
         $sidecodes = array();
+
+        // Special sidecodes
+        $sidecodes['CD'] =  '/^CD[\d]{2,4}$/';                      // Corps diplomatique license plates
+        $sidecodes['CDJ'] = '/^CDJ[\d]{2,3}$/';                     // Judges of the international courts of justice
+        $sidecodes['AA'] =  '/^AA[\d]{2,3}$/';                      // Members of the royal family
+
+        // Normal sidecodes
         $sidecodes[1] =     '/^[a-zA-Z]{2}[\d]{2}[\d]{2}$/';        // 1 XX-99-99
         $sidecodes[2] =     '/^[\d]{2}[\d]{2}[a-zA-Z]{2}$/';        // 2 99-99-XX
         $sidecodes[3] =     '/^[\d]{2}[a-zA-Z]{2}[\d]{2}$/';        // 3 99-XX-99
@@ -36,7 +43,6 @@ class DutchLicensePlate extends AbstractLicensePlate implements LicensePlateInte
         $sidecodes[12] =    '/^[a-zA-Z]{1}[\d]{2}[a-zA-Z]{3}$/';    // 12 X-99-XXX
         $sidecodes[13] =    '/^[\d]{1}[a-zA-Z]{2}[\d]{3}$/';        // 13 9-XX-999
         $sidecodes[14] =    '/^[\d]{3}[a-zA-Z]{2}[\d]{1}$/';        // 14 999-XX-9
-        $sidecodes['CD'] =  '/^CD[ABFJNST][0-9]{1,3}$/';            // Corps diplomatique license plates
 
         return $this->checkPatterns($sidecodes, $licenseplate);
     }
@@ -66,8 +72,20 @@ class DutchLicensePlate extends AbstractLicensePlate implements LicensePlateInte
         switch($sidecode)
         {
             case 'CD':
-                // We can't format special license plate numbers
-                return $licenseplate;
+                if(strlen($licenseplate) < 6)
+                {
+                    return 'CD-' . substr($licenseplate, 2);
+                }
+                else
+                {
+                    return 'CD-' . substr($licenseplate, 2, 2) . "-" . substr($licenseplate, 4, 2);
+                }
+
+            case 'CDJ':
+                return 'CDJ-' . substr($licenseplate, 3);
+
+            case 'AA':
+                return 'AA-' . substr($licenseplate, 2);
 
             case 7:
             case 9:
