@@ -18,4 +18,17 @@ abstract class AbstractLicensePlate
     {
         $this->licenseplate = $licenseplate;
     }
+
+    protected function checkPatterns(array $patterns, $licenseplate)
+    {
+        foreach($patterns as $key => $pattern)
+        {
+            if(preg_match($pattern, $licenseplate))
+            {
+                return $key;
+            }
+        }
+
+        return false;
+    }
 }

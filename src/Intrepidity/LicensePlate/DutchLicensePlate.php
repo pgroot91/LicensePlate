@@ -38,16 +38,7 @@ class DutchLicensePlate extends AbstractLicensePlate implements LicensePlateInte
         $sidecodes[14] =    '/^[\d]{3}[a-zA-Z]{2}[\d]{1}$/';        // 14 999-XX-9
         $sidecodes['CD'] =  '/^CD[ABFJNST][0-9]{1,3}$/';            // Corps diplomatique license plates
 
-
-        foreach($sidecodes as $key => $pattern)
-        {
-            if(preg_match($pattern, $licenseplate))
-            {
-                return $key;
-            }
-        }
-
-        return false;
+        return $this->checkPatterns($sidecodes, $licenseplate);
     }
 
     /**
