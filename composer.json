@@ -1,0 +1,22 @@
+{
+    "name": "Intrepidity/LicensePlate",
+    "description": "PHP library to validate and format license plate numbers. Support for other countries will follow.",
+    "keywords": ["PHP","License plate"],
+    "homepage": "http://github.com/Intrepidity/LicensePlate.git",
+    "type": "library",
+    "license": "LGPL",
+    "authors": [
+        {
+            "name": "Bart Guliker",
+            "email": "bart1987@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.0.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    }
+}

@@ -1,5 +1,4 @@
 <?php
-require_once("src/Intrepidity/LicensePlate/DutchLicensePlate.php");
 use Intrepidity\LicensePlate\DutchLicensePlate;
 
 class DutchLicensePlateFormatTest extends PHPUnit_Framework_TestCase
