@@ -5,7 +5,7 @@ class IsraeliLicensePlate extends AbstractLicensePlate implements LicensePlateIn
 {
      /**
      * Tests if the license plate is valid
-     * The license plate is valid if the sidecode can be determined
+     * The license plate is valid if the string contains 7 numeric characters (and dashes)
      *
      * @return bool
      */
@@ -23,12 +23,11 @@ class IsraeliLicensePlate extends AbstractLicensePlate implements LicensePlateIn
     /**
      * Format the license plate
      *
-     * Example: will output 196-BTD for input of 196btd
+     * Example: will output 12-345-67 for input of 1234567
      *
-     * @param int $sidecode Optional input of sidecode. Automatically determined if omitted
      * @return string Formatted license plate
      */
-    public function format($sidecode = 0)
+    public function format()
     {
         $licenseplate = strtoupper(str_replace(array('-', '.'), '', $this->licenseplate));
 
