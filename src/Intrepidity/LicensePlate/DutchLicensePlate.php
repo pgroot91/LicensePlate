@@ -7,7 +7,7 @@ namespace Intrepidity\LicensePlate;
  * Class DutchLicensePlate
  * @package Intrepidity\LicensePlate
  */
-class DutchLicensePlate
+class DutchLicensePlate implements LicensePlateInterface
 {
     /**
      * @var string License plate
