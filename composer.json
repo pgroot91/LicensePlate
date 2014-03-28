@@ -1,5 +1,5 @@
 {
-    "name": "Intrepidity/LicensePlate",
+    "name": "intrepidity/license-plate",
     "description": "PHP library to validate and format license plate numbers. Support for other countries will follow.",
     "keywords": ["PHP","License plate"],
     "homepage": "http://github.com/Intrepidity/LicensePlate.git",
