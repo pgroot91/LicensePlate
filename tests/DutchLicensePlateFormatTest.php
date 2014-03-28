@@ -34,5 +34,8 @@ class DutchLicensePlateFormatTest extends PHPUnit_Framework_TestCase
 
         $licenseplate = new DutchLicensePlate('thisisnotalicenseplate');
         $this->assertFalse($licenseplate->format());
+
+        $licenseplate = new DutchLicensePlate('08ttnp');
+        $this->assertEquals($licenseplate->format(7), '08-TTN-P', 'Test format using specific sidecode');
     }
 }
