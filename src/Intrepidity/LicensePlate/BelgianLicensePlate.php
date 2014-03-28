@@ -3,6 +3,13 @@ namespace Intrepidity\LicensePlate;
 
 class BelgianLicensePlate extends AbstractLicensePlate implements LicensePlateInterface
 {
+    /**
+     * Get the sidecode (series) of the numberplate
+     *
+     * More info: http://nl.wikipedia.org/wiki/Belgisch_kenteken#Vorm (Dutch)
+     *
+     * @return bool|int
+     */
     public function getSidecode()
     {
         $licenseplate = strtoupper(str_replace(array('.', '-'), '', $this->licenseplate));

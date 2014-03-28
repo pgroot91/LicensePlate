@@ -19,6 +19,13 @@ abstract class AbstractLicensePlate
         $this->licenseplate = $licenseplate;
     }
 
+    /**
+     * Check an array of regex patterns against the license plate string and give back the matching key if any
+     *
+     * @param array $patterns Array of regex patterns
+     * @param $licenseplate License plate string
+     * @return bool|int|string Key for matching regex in the array, or false if none matches.
+     */
     protected function checkPatterns(array $patterns, $licenseplate)
     {
         foreach($patterns as $key => $pattern)
