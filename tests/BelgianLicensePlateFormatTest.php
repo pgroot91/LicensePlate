@@ -25,5 +25,8 @@ class BelgianLicensePlateFormatTest extends PHPUnit_Framework_TestCase
 
         $licenseplate = new BelgianLicensePlate('9x-x.x-9.9-9');
         $this->assertEquals($licenseplate->format(), '9-XXX-999');
+
+        $licenseplate = new BelgianLicensePlate('thisisnotalicenseplate');
+        $this->assertFalse($licenseplate->format());
     }
 }

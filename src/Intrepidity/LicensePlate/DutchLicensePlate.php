@@ -56,6 +56,11 @@ class DutchLicensePlate extends AbstractLicensePlate implements LicensePlateInte
             $sidecode = $this->getSidecode();
         }
 
+        if(false === $sidecode)
+        {
+            return false;
+        }
+
         $licenseplate = strtoupper(str_replace('-', '', $this->licenseplate));
 
         switch($sidecode)

@@ -19,5 +19,20 @@ class DutchLicensePlateFormatTest extends PHPUnit_Framework_TestCase
 
         $licenseplate = new DutchLicensePlate('1-0-a-a-a-1');
         $this->assertEquals($licenseplate->format(), '10-AAA-1');
+
+        $licenseplate = new DutchLicensePlate('9abc99');
+        $this->assertEquals($licenseplate->format(), '9-ABC-99');
+
+        $licenseplate = new DutchLicensePlate('999xx9');
+        $this->assertEquals($licenseplate->format(), '999-XX-9');
+
+        $licenseplate = new DutchLicensePlate('9xx999');
+        $this->assertEquals($licenseplate->format(), '9-XX-999');
+
+        $licenseplate = new DutchLicensePlate('45fjvb');
+        $this->assertEquals($licenseplate->format(), '45-FJ-VB');
+
+        $licenseplate = new DutchLicensePlate('thisisnotalicenseplate');
+        $this->assertFalse($licenseplate->format());
     }
 }

@@ -49,6 +49,11 @@ class BelgianLicensePlate extends AbstractLicensePlate implements LicensePlateIn
             $sidecode = $this->getSidecode();
         }
 
+        if(false === $sidecode)
+        {
+            return false;
+        }
+
         $licenseplate = strtoupper(str_replace(array('-', '.'), '', $this->licenseplate));
 
         switch($sidecode)
