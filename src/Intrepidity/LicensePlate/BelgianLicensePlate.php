@@ -37,7 +37,7 @@ class BelgianLicensePlate extends AbstractLicensePlate implements LicensePlateIn
     /**
      * Format the license plate
      *
-     * Example: will output 08-TT-NP for input of 08ttnp
+     * Example: will output 196-BTD for input of 196btd
      *
      * @param int $sidecode Optional input of sidecode. Automatically determined if omitted
      * @return string Formatted license plate
