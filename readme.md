@@ -39,4 +39,4 @@ if($licenseplate->isValid())
 Since the license plate classes for each country implement the LicensePlateInterface, they expose isValid() and format() methods.
 Country-specific methods may also be available. Please check the code of the specific class to get the complete picture.
 
-Please note that this library does not check if a license plate actually exists, not does it exclude combinations that aren't allowed.
+Please note that this library does not check if a license plate actually exists, nor does it exclude combinations that aren't allowed.
