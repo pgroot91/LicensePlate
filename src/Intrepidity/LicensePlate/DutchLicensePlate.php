@@ -7,17 +7,9 @@ namespace Intrepidity\LicensePlate;
  * Class DutchLicensePlate
  * @package Intrepidity\LicensePlate
  */
-class DutchLicensePlate implements LicensePlateInterface
+class DutchLicensePlate extends AbstractLicensePlate implements LicensePlateInterface
 {
-    /**
-     * @var string License plate
-     */
-    private $licenseplate;
 
-    public function __construct($licenseplate)
-    {
-        $this->licenseplate = $licenseplate;
-    }
 
     /**
      * Get the sidecode of the license plate
