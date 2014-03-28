@@ -28,7 +28,7 @@ Call the constructor of the license plate class of your choice with the user inp
 
 ``` php
 <?php
-$licenseplate = new DutchLicensePlate('08ttnp');
+$licenseplate = new \Intrepidity\LicensePlate\DutchLicensePlate('08ttnp');
 ```
 
 Since the license plate classes for each country implement the LicensePlateInterface, they expose isValid() and format() methods.
