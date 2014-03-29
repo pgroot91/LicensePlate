@@ -3,7 +3,20 @@ namespace Intrepidity\LicensePlate;
 
 class IsraeliLicensePlate extends AbstractLicensePlate implements LicensePlateInterface
 {
-     /**
+    public function getSidecode()
+    {
+        $licenseplate = str_replace('-', '', $this->licenseplate);
+
+        $sidecodes = array();
+        $sidecodes['MTZ'] = '/^מצ[\d]{1,5}$/'; // Military police license plate
+        $sidecodes['M'] = '/^מ[\d]{1,7}$/'; // Police license plate
+        $sidecodes['TZ'] = '/^צ[\d]{1,7}$/'; // Military license plate
+        $sidecodes[1] = '/^[\d]{7}$/'; // Basic license plate
+
+        return $this->checkPatterns($sidecodes, $licenseplate);
+    }
+
+    /**
      * Tests if the license plate is valid
      * The license plate is valid if the string contains 7 numeric characters (and dashes)
      *
@@ -11,13 +24,7 @@ class IsraeliLicensePlate extends AbstractLicensePlate implements LicensePlateIn
      */
     public function isValid()
     {
-        $licenseplate = str_replace('-', '', $this->licenseplate);
-
-        if(preg_match('/^[\d]{7}$/', $licenseplate))
-        {
-            return true;
-        }
-        return false;
+        return $this->getSidecode() != false;
     }
 
     /**
@@ -31,11 +38,32 @@ class IsraeliLicensePlate extends AbstractLicensePlate implements LicensePlateIn
     {
         $licenseplate = strtoupper(str_replace(array('-', '.'), '', $this->licenseplate));
 
-        if(!$this->isValid())
+        if(false === $this->isValid())
         {
             return false;
         }
 
-        return substr($licenseplate, 0, 2) . '-' . substr($licenseplate, 2, 3) . '-' . substr($licenseplate, 5, 2);
+        switch($this->getSidecode())
+        {
+            case 1:
+                return substr($licenseplate, 0, 2) . '-' . substr($licenseplate, 2, 3) . '-' . substr($licenseplate, 5, 2);
+                break;
+
+            case 'M':
+                return 'מ-' . mb_substr($licenseplate, 2);
+                break;
+
+            case 'TZ':
+                return 'צ-' . mb_substr($licenseplate, 2);
+                break;
+
+            case 'MTZ':
+                return 'מצ-'.mb_substr($licenseplate, 4);
+                break;
+
+            default:
+                return $licenseplate; // Formatting for special license plates not yet implemented
+                break;
+        }
     }
 }

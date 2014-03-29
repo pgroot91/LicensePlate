@@ -16,5 +16,17 @@ class IsraeliLicensePlateFormatTest extends PHPUnit_Framework_TestCase
         $licenseplate = new IsraeliLicensePlate('123456a');
         $this->assertFalse($licenseplate->isValid());
         $this->assertFalse($licenseplate->format());
+
+        $licenseplate = new IsraeliLicensePlate('מ1234');
+        $this->assertTrue($licenseplate->isValid());
+        $this->assertEquals($licenseplate->format(), 'מ-1234');
+
+        $licenseplate = new IsraeliLicensePlate('צ1234');
+        $this->assertTrue($licenseplate->isValid());
+        $this->assertEquals($licenseplate->format(), 'צ-1234');
+
+        $licenseplate = new IsraeliLicensePlate('מצ1234');
+        $this->assertTrue($licenseplate->isValid());
+        $this->assertEquals($licenseplate->format(), 'מצ-1234');
     }
 }
