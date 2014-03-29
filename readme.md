@@ -5,6 +5,7 @@ This library can be used to validate and format license plate numbers.
 Countries currently supported:
 
 * Belgium (1971-now)
+* Israel (unknown date-now)
 * The Netherlands (1951-now)
 
 Other countries will be added in the future
