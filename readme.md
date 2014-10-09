@@ -8,6 +8,7 @@ Countries currently supported:
 * France (1976-now)
 * Israel (unknown date-now)
 * The Netherlands (1951-now)
+* United Kingdon (2001-now)
 
 Other countries will be added in the future
 
