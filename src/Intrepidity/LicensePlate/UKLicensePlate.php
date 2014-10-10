@@ -9,8 +9,6 @@ namespace Intrepidity\LicensePlate;
  */
 class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterface
 {
-
-
     /**
      * Get the sidecode of the license plate
      *
