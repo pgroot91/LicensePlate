@@ -21,7 +21,8 @@ class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterfa
     public function getSidecode()
     {
         $licenseplate = strtoupper(str_replace('-', '', $this->licenseplate));
-        $sidecodes = array();                                  // Military: 99999999
+        $sidecodes = array();
+        $sidecodes['NI'] = '/^[a-zA-Z]?[a-zA-Z]{2}[\d]{4}$/';   // Northern Ireland
 
         // Normal sidecodes
         $sidecodes[1] = '/^[a-zA-Z]{2}[\d]{2}[a-zA-Z]{3}$/';    // 1 XX99 XXX; 2001-now
@@ -55,6 +56,11 @@ class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterfa
         {
             case 1:
                 return substr($licenseplate, 0, 4) . ' ' . substr($licenseplate, 4, 3);
+                break;
+
+            case 'NI':
+                preg_match('/^([a-zA-Z]?[a-zA-Z]{2})([\d]{4})$/', $licenseplate, $parts);
+                return $parts[1] . ' ' . $parts[2];
                 break;
         }
 

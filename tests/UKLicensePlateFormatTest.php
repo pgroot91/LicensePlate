@@ -8,5 +8,13 @@ class UKLicensePlateFormatTest extends PHPUnit_Framework_TestCase
         $licenseplate = new UKLicensePlate('bd51qmc');
         $this->assertTrue($licenseplate->isValid());
         $this->assertEquals($licenseplate->format(), 'BD51 QMC');
+
+        $licenseplate = new UKLicensePlate('bbd1234');
+        $this->assertTrue($licenseplate->isValid());
+        $this->assertEquals($licenseplate->format(), 'BBD 1234');
+
+        $licenseplate = new UKLicensePlate('bd1234');
+        $this->assertTrue($licenseplate->isValid());
+        $this->assertEquals($licenseplate->format(), 'BD 1234');
     }
 }
