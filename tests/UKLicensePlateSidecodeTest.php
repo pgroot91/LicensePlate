@@ -23,6 +23,14 @@ class UKLicensePlateSidecodeTest extends PHPUnit_Framework_TestCase
         $licenseplate = new UKLicensePlate('AAA9');
         $this->assertEquals($licenseplate->getSidecode(), 2);
         $this->assertTrue($licenseplate->isValid());
+
+        $licenseplate = new UKLicensePlate('1000E');
+        $this->assertEquals($licenseplate->getSidecode(), 2);
+        $this->assertTrue($licenseplate->isValid());
+
+        $licenseplate = new UKLicensePlate('1AAA');
+        $this->assertEquals($licenseplate->getSidecode(), 2);
+        $this->assertTrue($licenseplate->isValid());
     }
 
     public function testSidecode5()

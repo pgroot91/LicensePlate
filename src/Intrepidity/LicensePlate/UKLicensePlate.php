@@ -24,7 +24,7 @@ class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterfa
 
         // Normal sidecodes
         $sidecodes[1] = '/^[a-zA-Z]{1,2}[\d]{1,4}$/';             // A(A) 9999; 1903-1932
-        $sidecodes[2] = '/^[a-zA-Z]{3}[\d]{1,4}$/';               // XXX 999; 1932-1963 and Northern Ireland 1985-now
+        $sidecodes[2] = '/^(([a-zA-Z]{3}[\d]{1,4})|([\d]{1,4}[a-zA-Z]{1,3}))$/'; // XXX 999 and 999 XXX; 1932-1963 and Northern Ireland 1985-now
         //$sidecodes[3] = '';                                     // 1963-1982; to be implemented
         //$sidecodes[4] = '';                                     // 1982-2001; to be implemented
         $sidecodes[5] = '/^[a-zA-Z]{2}[\d]{2}[a-zA-Z]{3}$/';      // XX99 XXX; 2001-now
@@ -62,7 +62,12 @@ class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterfa
                 break;
 
             case 2:
-                return substr($licenseplate, 0, 3) . ' ' . substr($licenseplate, 3);
+                if (preg_match('/^[a-zA-Z]{3}[\d]{1,4}$/', $licenseplate)) {
+                    return substr($licenseplate, 0, 3) . ' ' . substr($licenseplate, 3);
+                } else {
+                    preg_match('/^([\d]{1,4})([a-zA-Z]{1,3})$/', $licenseplate, $parts);
+                    return $parts[1] . ' ' . $parts[2];
+                }
                 break;
 
             case 5:
