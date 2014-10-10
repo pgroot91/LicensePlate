@@ -10,7 +10,7 @@ Countries currently supported:
 * France (1976-now)
 * Israel (unknown date-now)
 * The Netherlands (1951-now)
-* United Kingdom (Northern Ireland 1903-now; rest of UK 1903-1932 and 2001-now)
+* United Kingdom (Northern Ireland 1903-now; rest of UK 1903-1963 and 2001-now)
 
 Other countries will be added in the future
 
