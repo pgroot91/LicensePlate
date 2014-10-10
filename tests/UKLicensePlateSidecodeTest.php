@@ -14,6 +14,17 @@ class UKLicensePlateSidecodeTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($licenseplate->isValid());
     }
 
+    public function testSidecode2()
+    {
+        $licenseplate = new UKLicensePlate('AAA999');
+        $this->assertEquals($licenseplate->getSidecode(), 2);
+        $this->assertTrue($licenseplate->isValid());
+
+        $licenseplate = new UKLicensePlate('AAA9');
+        $this->assertEquals($licenseplate->getSidecode(), 2);
+        $this->assertTrue($licenseplate->isValid());
+    }
+
     public function testSidecode5()
     {
         $licenseplate = new UKLicensePlate('BD51GMQ');
@@ -23,20 +34,5 @@ class UKLicensePlateSidecodeTest extends PHPUnit_Framework_TestCase
         $licenseplate = new UKLicensePlate('AK12GMCC');
         $this->assertFalse($licenseplate->getSidecode());
         $this->assertFalse($licenseplate->isValid());
-    }
-
-    public function testSidecodeNI()
-    {
-        $licenseplate = new UKLicensePlate('BBD1234');
-        $this->assertEquals($licenseplate->getSidecode(), 'NI');
-        $this->assertTrue($licenseplate->isValid());
-
-        $licenseplate = new UKLicensePlate('1ia');
-        $this->assertEquals($licenseplate->getSidecode(), 'NI2');
-        $this->assertTrue($licenseplate->isValid());
-
-        $licenseplate = new UKLicensePlate('9999ia');
-        $this->assertEquals($licenseplate->getSidecode(), 'NI2');
-        $this->assertTrue($licenseplate->isValid());
     }
 }

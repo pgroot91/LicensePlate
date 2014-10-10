@@ -20,12 +20,11 @@ class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterfa
     {
         $licenseplate = strtoupper(str_replace('-', '', $this->licenseplate));
         $sidecodes = array();
-        $sidecodes['NI'] = '/^[a-zA-Z]{3}[\d]{1,4}$/';            // Northern Ireland 1985-now
-        $sidecodes['NI2'] = '/^[\d]{1,4}[a-zA-Z]{2}$/';           // Northern Ireland 1958-1985
+        $sidecodes['NI'] = '/^[\d]{1,4}[a-zA-Z]{2}$/';            // Northern Ireland 1958-1985
 
         // Normal sidecodes
         $sidecodes[1] = '/^[a-zA-Z]{1,2}[\d]{1,4}$/';             // A(A) 9999; 1903-1932
-        //$sidecodes[2] = '';                                     // 1932-1963; to be implemented
+        $sidecodes[2] = '/^[a-zA-Z]{3}[\d]{1,4}$/';               // XXX 999; 1932-1963 and Northern Ireland 1985-now
         //$sidecodes[3] = '';                                     // 1963-1982; to be implemented
         //$sidecodes[4] = '';                                     // 1982-2001; to be implemented
         $sidecodes[5] = '/^[a-zA-Z]{2}[\d]{2}[a-zA-Z]{3}$/';      // XX99 XXX; 2001-now
@@ -62,16 +61,15 @@ class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterfa
                 return $parts[1] . ' ' . $parts[2];
                 break;
 
+            case 2:
+                return substr($licenseplate, 0, 3) . ' ' . substr($licenseplate, 3);
+                break;
+
             case 5:
                 return substr($licenseplate, 0, 4) . ' ' . substr($licenseplate, 4, 3);
                 break;
 
             case 'NI':
-                preg_match('/^([a-zA-Z]?[a-zA-Z]{2})([\d]{4})$/', $licenseplate, $parts);
-                return $parts[1] . ' ' . $parts[2];
-                break;
-
-            case 'NI2':
                 preg_match('/^([\d]{1,4})([a-zA-Z]{2})$/', $licenseplate, $parts);
                 return $parts[1] . ' ' . $parts[2];
                 break;
