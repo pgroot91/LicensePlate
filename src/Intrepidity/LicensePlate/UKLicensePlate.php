@@ -18,7 +18,7 @@ class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterfa
      */
     public function getSidecode()
     {
-        $licenseplate = strtoupper(str_replace('-', '', $this->licenseplate));
+        $licenseplate = strtoupper(str_replace(array('-', ' '), '', $this->licenseplate));
         $sidecodes = array();
         $sidecodes['NI'] = '/^[\d]{1,4}[a-zA-Z]{2}$/';            // Northern Ireland 1958-1985
 
@@ -52,7 +52,7 @@ class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterfa
             return false;
         }
 
-        $licenseplate = strtoupper(str_replace('-', '', $this->licenseplate));
+        $licenseplate = strtoupper(str_replace(array(' ', '-'), '', $this->licenseplate));
 
         switch($sidecode)
         {
