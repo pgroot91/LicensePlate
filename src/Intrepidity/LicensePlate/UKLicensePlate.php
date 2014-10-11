@@ -20,14 +20,14 @@ class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterfa
     {
         $licenseplate = strtoupper(str_replace(array('-', ' '), '', $this->licenseplate));
         $sidecodes = array();
-        $sidecodes['NI'] = '/^[\d]{1,4}[a-zA-Z]{2}$/';            // Northern Ireland 1958-1985
+        $sidecodes['NI'] = '/^[\d]{1,4}[a-zA-Z]{2}$/';                           // Northern Ireland 1958-1985
 
         // Normal sidecodes
-        $sidecodes[1] = '/^[a-zA-Z]{1,2}[\d]{1,4}$/';             // A(A) 9999; 1903-1932
-        $sidecodes[2] = '/^(([a-zA-Z]{3}[\d]{1,4})|([\d]{1,4}[a-zA-Z]{1,3}))$/'; // XXX 999 and 999 XXX; 1932-1963 and Northern Ireland 1985-now
-        $sidecodes[3] = '/^[a-zA-Z]{1,3}[\d]{1,4}[a-zA-Z]{1}$/';                 // XXX 9999X 1963-1982;
-        //$sidecodes[4] = '';                                     // 1982-2001; to be implemented
-        $sidecodes[5] = '/^[a-zA-Z]{2}[\d]{2}[a-zA-Z]{3}$/';      // XX99 XXX; 2001-now
+        $sidecodes[1] = '/^[A-Z]{1,2}[\d]{1,4}$/';                            // A(A) 9999; 1903-1932
+        $sidecodes[2] = '/^(([A-Z]{3}[\d]{1,4})|([\d]{1,4}[A-Z]{1,3}))$/'; // XXX 999 and 999 XXX; 1932-1963 and Northern Ireland 1985-now
+        $sidecodes[3] = '/^[A-Z]{1,3}[\d]{1,4}[A-Z]{1}$/';                 // XXX 9999X; 1963-1982
+        $sidecodes[4] = '/^[A-Z]{1}[\d]{2,3}[A-Z]{3}$/';                   // A999 XXX; 1982-2001
+        $sidecodes[5] = '/^[A-Z]{2}[\d]{2}[A-Z]{3}$/';                     // XX99 XXX; 2001-now
 
         return $this->checkPatterns($sidecodes, $licenseplate);
     }
@@ -72,6 +72,11 @@ class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterfa
 
             case 3:
                 preg_match('/^([a-zA-Z]{1,3})([\d]{1,4}[a-zA-Z]{1})$/', $licenseplate, $parts);
+                return $parts[1] . ' ' . $parts[2];
+                break;
+
+            case 4:
+                preg_match('/^([A-Z]{1}[\d]{2,3})([A-Z]{3})$/', $licenseplate, $parts);
                 return $parts[1] . ' ' . $parts[2];
                 break;
 
