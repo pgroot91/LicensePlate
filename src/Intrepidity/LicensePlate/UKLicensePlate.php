@@ -20,10 +20,13 @@ class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterfa
     {
         $licenseplate = strtoupper(str_replace(array('-', ' '), '', $this->licenseplate));
         $sidecodes = array();
-        $sidecodes['NI'] = '/^[\d]{1,4}[a-zA-Z]{2}$/';                           // Northern Ireland 1958-1985
+        $sidecodes['NI'] = '/^[\d]{1,4}[a-zA-Z]{2}$/';                     // Northern Ireland 1958-1985
+        $sidecodes['JER'] = '/^J[\d]{1,6}$/';                              // J999999; Jersey
+        $sidecodes['GUE'] = '/^[\d]{1,5}$/';                               // 99999; Guernsey
+        $sidecodes['ALD'] = '/^AY[\d]{1,4}$/';                             // AY9999; Alderney
 
         // Normal sidecodes
-        $sidecodes[1] = '/^[A-Z]{1,2}[\d]{1,4}$/';                            // A(A) 9999; 1903-1932
+        $sidecodes[1] = '/^[A-Z]{1,2}[\d]{1,4}$/';                         // A(A) 9999; 1903-1932
         $sidecodes[2] = '/^(([A-Z]{3}[\d]{1,4})|([\d]{1,4}[A-Z]{1,3}))$/'; // XXX 999 and 999 XXX; 1932-1963 and Northern Ireland 1985-now
         $sidecodes[3] = '/^[A-Z]{1,3}[\d]{1,4}[A-Z]{1}$/';                 // XXX 9999X; 1963-1982
         $sidecodes[4] = '/^[A-Z]{1}[\d]{2,3}[A-Z]{3}$/';                   // A999 XXX; 1982-2001
@@ -88,6 +91,11 @@ class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterfa
                 preg_match('/^([\d]{1,4})([a-zA-Z]{2})$/', $licenseplate, $parts);
                 return $parts[1] . ' ' . $parts[2];
                 break;
+
+            case 'JER':
+            case 'GUE':
+            case 'ALD':
+                return $licenseplate;
         }
 
         return $licenseplate;

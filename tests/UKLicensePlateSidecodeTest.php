@@ -3,6 +3,27 @@ use Intrepidity\LicensePlate\UKLicensePlate;
 
 class UKLicensePlateSidecodeTest extends PHPUnit_Framework_TestCase
 {
+    public function testSidecodeJer()
+    {
+        $licenseplate = new UKLicensePlate('J123456');
+        $this->assertEquals($licenseplate->getSidecode(), 'JER');
+        $this->assertTrue($licenseplate->isValid());
+    }
+
+    public function testSidecodeGue()
+    {
+        $licenseplate = new UKLicensePlate('12346');
+        $this->assertEquals($licenseplate->getSidecode(), 'GUE');
+        $this->assertTrue($licenseplate->isValid());
+    }
+
+    public function testSidecodeAld()
+    {
+        $licenseplate = new UKLicensePlate('AY1234');
+        $this->assertEquals($licenseplate->getSidecode(), 'ALD');
+        $this->assertTrue($licenseplate->isValid());
+    }
+
     public function testSidecode1()
     {
         $licenseplate = new UKLicensePlate('BD1234');
