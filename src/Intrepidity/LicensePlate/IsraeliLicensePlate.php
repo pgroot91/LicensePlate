@@ -43,6 +43,11 @@ class IsraeliLicensePlate extends AbstractLicensePlate implements LicensePlateIn
             return false;
         }
 
+        $multiplicationFactor = 1;
+        if (version_compare(PHP_VERSION, '5.6.0', '<')) {
+            $multiplicationFactor = 2;
+        }
+
         switch($this->getSidecode())
         {
             case 1:
@@ -50,15 +55,15 @@ class IsraeliLicensePlate extends AbstractLicensePlate implements LicensePlateIn
                 break;
 
             case 'M':
-                return 'מ-' . mb_substr($licenseplate, 1);
+                return 'מ-' . mb_substr($licenseplate, 1 * $multiplicationFactor);
                 break;
 
             case 'TZ':
-                return 'צ-' . mb_substr($licenseplate, 1);
+                return 'צ-' . mb_substr($licenseplate, 1 * $multiplicationFactor);
                 break;
 
             case 'MTZ':
-                return 'מצ-'.mb_substr($licenseplate, 2);
+                return 'מצ-'.mb_substr($licenseplate, 2 * $multiplicationFactor);
                 break;
 
             default:
