@@ -50,15 +50,15 @@ class IsraeliLicensePlate extends AbstractLicensePlate implements LicensePlateIn
                 break;
 
             case 'M':
-                return 'מ-' . mb_substr($licenseplate, 2);
+                return 'מ-' . mb_substr($licenseplate, 1);
                 break;
 
             case 'TZ':
-                return 'צ-' . mb_substr($licenseplate, 2);
+                return 'צ-' . mb_substr($licenseplate, 1);
                 break;
 
             case 'MTZ':
-                return 'מצ-'.mb_substr($licenseplate, 4);
+                return 'מצ-'.mb_substr($licenseplate, 2);
                 break;
 
             default:
