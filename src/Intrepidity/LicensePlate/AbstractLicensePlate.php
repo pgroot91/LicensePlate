@@ -16,7 +16,7 @@ abstract class AbstractLicensePlate
 
     public function __construct($licenseplate)
     {
-        $this->licenseplate = preg_replace('/\s+/', '', $licenseplate);
+        $this->licenseplate = str_replace(' ', '', $licenseplate);
     }
 
     /**
