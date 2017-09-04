@@ -11,6 +11,7 @@ Countries currently supported:
 * Israel (unknown date-now)
 * The Netherlands (1951-now)
 * United Kingdom (1903-now)
+* German (unknown-now)
 
 Other countries will be added in the future
 
