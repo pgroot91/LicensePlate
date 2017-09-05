@@ -1,7 +1,7 @@
 <?php
 use Intrepidity\LicensePlate\LuxembourgianLicensePlate;
 
-class LuxembourgianLicensePlateSidecodeTest extends PHPUnit_Framework_TestCase
+class LuxembourgianLicensePlateSidecodeTest extends \PHPUnit\Framework\TestCase
 {
     public function testSidecode1()
     {
