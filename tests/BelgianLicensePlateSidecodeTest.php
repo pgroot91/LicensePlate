@@ -2,7 +2,7 @@
 require_once("src/Intrepidity/LicensePlate/DutchLicensePlate.php");
 use Intrepidity\LicensePlate\BelgianLicensePlate;
 
-class BelgianLicensePlateSidecodeTest extends PHPUnit_Framework_TestCase
+class BelgianLicensePlateSidecodeTest extends \PHPUnit\Framework\TestCase
 {
     public function testGetSidecode1()
     {

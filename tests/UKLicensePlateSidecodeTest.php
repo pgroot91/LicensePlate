@@ -1,7 +1,7 @@
 <?php
 use Intrepidity\LicensePlate\UKLicensePlate;
 
-class UKLicensePlateSidecodeTest extends PHPUnit_Framework_TestCase
+class UKLicensePlateSidecodeTest extends \PHPUnit\Framework\TestCase
 {
     public function testSidecodeJer()
     {
