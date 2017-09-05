@@ -1,6 +1,6 @@
 {
     "name": "intrepidity/license-plate",
-    "description": "PHP library to validate and format license plate numbers. Support for other countries will follow.",
+    "description": "PHP library to validate and format license plate numbers.",
     "keywords": ["PHP","License plate"],
     "homepage": "http://github.com/Intrepidity/LicensePlate.git",
     "type": "library",
@@ -12,7 +12,10 @@
         }
     ],
     "require": {
-        "php": ">=5.0.0"
+        "php": ">=5.6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.3"
     },
     "autoload": {
         "psr-0": {
