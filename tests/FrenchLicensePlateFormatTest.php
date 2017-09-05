@@ -1,7 +1,7 @@
 <?php
 use Intrepidity\LicensePlate\FrenchLicensePlate;
 
-class FrenchLicensePlateFormatTest extends PHPUnit_Framework_TestCase
+class FrenchLicensePlateFormatTest extends \PHPUnit\Framework\TestCase
 {
     public function testFormat()
     {

@@ -1,7 +1,7 @@
 <?php
 use Intrepidity\LicensePlate\FrenchLicensePlate;
 
-class FrenchLicensePlateSidecodeTest extends PHPUnit_Framework_TestCase
+class FrenchLicensePlateSidecodeTest extends \PHPUnit\Framework\TestCase
 {
     public function testSidecodeMil()
     {
