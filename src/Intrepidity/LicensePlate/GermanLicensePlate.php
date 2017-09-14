@@ -147,7 +147,7 @@ class GermanLicensePlate extends AbstractLicensePlate implements LicensePlateInt
                 return $licenseplate[0] . "-" . $licenseplate[1];
 
             case self::SIDE_CODE_CORPS_DIPLOMATIC:
-                $parts = $this->getLicePlateParts($original_transformed_licenseplate);
+                $parts = $this->getLicensePlateParts($original_transformed_licenseplate);
                 if (count($parts) === 3 && $parts[0] === '0')
                 {
                     $second_part_length = strlen($parts[1]);
@@ -284,7 +284,7 @@ class GermanLicensePlate extends AbstractLicensePlate implements LicensePlateInt
             substr($licenseplate, $middle_part_length + $district_length);
     }
 
-    private function getLicePlateParts($original_transformed_licenseplate)
+    private function getLicensePlateParts($original_transformed_licenseplate)
     {
         $parts = array();
         $exploded_by_dash = explode('-', $original_transformed_licenseplate);
