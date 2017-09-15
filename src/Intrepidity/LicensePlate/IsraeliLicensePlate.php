@@ -66,4 +66,14 @@ class IsraeliLicensePlate extends AbstractLicensePlate implements LicensePlateIn
                 break;
         }
     }
+
+    public function getTwoLetterISO()
+    {
+        return 'IL';
+    }
+
+    public function getThreeLetterISO()
+    {
+        return 'ISR';
+    }
 }

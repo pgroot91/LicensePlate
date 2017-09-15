@@ -88,4 +88,14 @@ class FrenchLicensePlate extends AbstractLicensePlate implements LicensePlateInt
     {
         return $this->getSidecode() != false;
     }
+
+    public function getTwoLetterISO()
+    {
+        return 'FR';
+    }
+
+    public function getThreeLetterISO()
+    {
+        return 'FRA';
+    }
 }

@@ -123,4 +123,14 @@ class DutchLicensePlate extends AbstractLicensePlate implements LicensePlateInte
     {
         return $this->getSidecode() != false;
     }
+
+    public function getTwoLetterISO()
+    {
+        return 'NL';
+    }
+
+    public function getThreeLetterISO()
+    {
+        return 'NLD';
+    }
 }

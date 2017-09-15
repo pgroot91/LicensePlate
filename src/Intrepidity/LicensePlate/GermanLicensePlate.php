@@ -298,4 +298,14 @@ class GermanLicensePlate extends AbstractLicensePlate implements LicensePlateInt
         }
         return $parts;
     }
+
+    public function getTwoLetterISO()
+    {
+        return 'DE';
+    }
+
+    public function getThreeLetterISO()
+    {
+        return 'DEU';
+    }
 }
