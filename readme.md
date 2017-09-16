@@ -8,10 +8,11 @@ Countries currently supported:
 
 * Belgium (1971-now)
 * France (1976-now)
-* Israel (unknown date-now)
-* The Netherlands (1951-now)
-* United Kingdom (1903-now)
 * German (unknown-now)
+* Israel (unknown date-now)
+* Netherlands (1951-now)
+* Spain (1900-now)
+* United Kingdom (1903-now)
 
 Other countries will be added in the future
 
@@ -23,7 +24,7 @@ Add the following to your composer.json:
 ``` json
 {
     "require": {
-        "intrepidity/license-plate": "dev-master"
+        "intrepidity/license-plate": "^1.0.0"
     }
 }
 ```
