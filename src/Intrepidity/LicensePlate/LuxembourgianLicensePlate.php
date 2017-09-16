@@ -75,4 +75,14 @@ class LuxembourgianLicensePlate extends AbstractLicensePlate implements LicenseP
     {
         return $this->getSidecode() != false;
     }
+
+    public function getTwoLetterISO()
+    {
+        return 'LU';
+    }
+
+    public function getThreeLetterISO()
+    {
+        return 'LUX';
+    }
 }

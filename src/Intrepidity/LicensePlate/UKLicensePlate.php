@@ -111,4 +111,15 @@ class UKLicensePlate extends AbstractLicensePlate implements LicensePlateInterfa
     {
         return $this->getSidecode() != false;
     }
+
+    /** Country codes as per https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes */
+    public function getTwoLetterISO()
+    {
+        return 'GB';
+    }
+
+    public function getThreeLetterISO()
+    {
+        return 'GBR';
+    }
 }

@@ -70,4 +70,14 @@ class BelgianLicensePlate extends AbstractLicensePlate implements LicensePlateIn
                 return substr($licenseplate, 0, 1) . "-" . substr($licenseplate, 1, 3) . "-" . substr($licenseplate, 4, 3);
         }
     }
+
+    public function getTwoLetterISO()
+    {
+        return 'BE';
+    }
+
+    public function getThreeLetterISO()
+    {
+        return 'BEL';
+    }
 }
